@@ -13,6 +13,17 @@ a {
     text-decoration: none;
 }
 
+h1 {
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-bottom: 7px;
+}
+
+p {
+    margin-bottom: 5px;
+}
 button,input[type=submit] {
     outline: none;
     border: none;
@@ -24,6 +35,11 @@ button,input[type=submit] {
     padding-left: 50px;
     padding-right: 50px;
     height: 60px;
+    margin-bottom: 20px;
+}
+
+.h-100 {
+    height: 100%;
 }
 
 .header-title {
@@ -35,6 +51,7 @@ button,input[type=submit] {
     padding: 20px;
     color: white;
     font-weight: bold;
+    height: 100%;
 }
 
 .header-item-active, .header-item:hover{
@@ -49,6 +66,10 @@ button,input[type=submit] {
     flex-direction: row;
 }
 
+.flex-column {
+    flex-direction: column;
+}
+
 .flex-row-reverse {
     flex-direction: row-reverse;
 }
@@ -57,6 +78,9 @@ button,input[type=submit] {
     justify-content: flex-end;
 }
 
+.justify-content-center {
+    justify-content: center;
+}
 .flex-grow-1 {
     flex-grow: 1;
 }
@@ -71,6 +95,7 @@ button,input[type=submit] {
     font-size: 20px;
     border-radius: 0.5rem;
     cursor: pointer;
+    width:fit-content
 }
 
 .btn-primary {
@@ -85,8 +110,12 @@ button,input[type=submit] {
 
 
 .footer {
-    display: flex;
-    justify-content: center;
+    background-color: white;
+    width: 100%;
+}
+
+.bg-primary {
+    background-color:#42aaf5 ;
 }
 .w-100 {
     width: 100%;
@@ -113,3 +142,88 @@ button,input[type=submit] {
 .mb-5 {
     margin-bottom: 5px;
 }
+
+#contact-form {
+    width: 600px;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.subscribe {
+    display: flex;
+    justify-content: center;
+}
+
+.text-white {
+    color: white;
+}
+
+.blog.card {
+    width:50%;
+    height: 150px;
+}
+
+
+.blog.card h2 {
+    width: 100%;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.blog.card p {
+    width: 100%;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.blog.card button {
+    font-size: 15px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.page {
+    width: 75%;
+    margin-bottom: 10px;
+}
+
+.login-card {
+    width: 50%;
+}
+
+.vh-100 {
+    height: 100vh;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    background-color: #42aaf5;
+    color: white;
+}
+
+th,td {
+    text-align: left;
+    padding: 10px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.sticky-top {
+    position: sticky;
+    top:0;
+}
+

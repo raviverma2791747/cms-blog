@@ -13,4 +13,8 @@ function safe_string($str){
     return $str;
 }
 
+function alert($str){
+    echo "<script>alert('{$str}')</script>";
+}
+
 ?>
