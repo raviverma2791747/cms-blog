@@ -10,38 +10,30 @@ logged_in();
 $heading = "";
 $content = "";
 if (isset($_POST["submit"])) {
-    $id = $_GET["id"];
     $heading = safe_string($_POST["heading"]);
+    $date = date("Y-m-d");
+    $author = $_SESSION["id"];
     $content = safe_string($_POST["content"]);
 
     if ($heading == "" || $content == "") {
         alert("Heading or content is empty!");
     } else {
-        $query = "UPDATE page SET heading='{$heading}',content='{$content}' WHERE id={$id};";
+        $query = "INSERT INTO page (heading,date,author,content) VALUES('{$heading}','{$date}',{$author},'{$content}');";
 
         $result = $con->query($query);
 
         if ($result) {
-           alert("Post updated successfully!");
+           redirect("./admin.php");
         } else {
-            alert("Failed to update!");
+            alert("Failed to post!");
         }
     }
-}else if(isset($_GET["id"])){
-    $result = get_page($_GET["id"]);
-    $id= $_GET["id"];
-    $page = $result->fetch_assoc();
-    $heading = $page["heading"] ;
-    $content = $page["content"] ;
-}else{
-    redirect("./admin.php");
 }
 
 ?>
-
 <div class="container">
     <div class="card shadow">
-        <form action="edit_page.php?id=<?php echo $id;; ?>" method="post">
+        <form action="add_page.php" method="post">
             <div class="mb-10">
                 <input class="input w-100" name="heading" placeholder="heading" value="<?php echo $heading; ?>">
             </div>

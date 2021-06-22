@@ -162,7 +162,7 @@ button,input[type=submit] {
 
 .blog.card {
     width:50%;
-    height: 150px;
+    height: fit-content;
 }
 
 
@@ -227,3 +227,6 @@ tr:nth-child(even) {background-color: #f2f2f2;}
     top:0;
 }
 
+.justify-content-space-evenly {
+    justify-content: space-between ;
+}

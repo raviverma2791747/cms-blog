@@ -36,6 +36,8 @@ if(isset($_POST["submit"])){
             }
         }
     }
+}else if(isset($_SESSION["id"])){
+    redirect("./admin.php");
 } 
 ?>
 <body class="vh-100">

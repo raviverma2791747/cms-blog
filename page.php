@@ -1,15 +1,29 @@
+<?php require_once("./include/connection.php");?>
+<?php require_once("./include/functions.php");?>
+
+
 <?php require_once("./include/header.php")?>
 
+<?php 
+
+if(isset($_GET["id"])){
+  $id = $_GET["id"];
+  $result =  get_page($id);
+  $page = $result->fetch_assoc();
+  $author = get_user($page["author"])->fetch_assoc()["username"];
+
+}else{
+  redirect("./index.php");
+}
+?>
 <div class="container-fluid d-flex justify-content-center">
 
 <div class="page card shadow">
-  <h1>Heading</h1>
-  <span><small><time datetime="">2021-11-10</time></small></span><br>
-  <span><em>Author</em></span>
+  <h1><?php echo $page["heading"];?></h1>
+  <span><small><time datetime="<?php echo $page["date"];?>"><?php echo $page["date"];?></time></small></span><br>
+  <span><em><?php echo $author; ?></em></span>
   <hr class="mb-5">
-  <section>
-  <h2>Heading 2</h2>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit alias in tenetur hic facilis amet cupiditate dolore, illo mollitia porro rem perspiciatis animi. Illum, excepturi dignissimos sunt numquam iure vitae.</p>
+  <p><?php echo $page["content"];?></p>
   </section>
 </div>
 
