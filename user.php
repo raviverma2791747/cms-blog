@@ -18,7 +18,7 @@ logged_in();
                  while($user = $result->fetch_assoc()){
                      echo "<tr>";
                      echo "<td>".$user["username"]."</td>";
-                     echo "<td><a href=\"./edit_user.php?id=".urlencode($user["id"])."\">Edit</a> <a href=\"./delete_user.php?id=".urlencode($user["id"])."\">Delete</a></td>";
+                     echo "<td class=\"d-flex justify-content-space-evenly\"><a href=\"./edit_user.php?id=".urlencode($user["id"])."\">Edit</a> <a class=\"text-danger\" href=\"./delete_user.php?id=".urlencode($user["id"])."\">Delete</a></td>";
                      echo "</tr>";
                  }
                 ?>

@@ -3,6 +3,9 @@
 
 <?php 
 
+$name= null;
+$email = null;
+$message =null;
 if(isset($_POST["submit"])){
     $date = date("Y-m-d");
     $name = safe_string($_POST["name"]);
@@ -18,6 +21,9 @@ if(isset($_POST["submit"])){
 
         if($result){
             alert("Form submitted!");
+            $name=null;
+            $email=null;
+            $message=null;
         }else{
             alert("Failed to submit form");
         }
@@ -33,13 +39,13 @@ if(isset($_POST["submit"])){
             <h2 class="text-center">Contact</h2>
         </div>
         <div class="mb-5">
-            <input class="input w-100" type="text" name="name" placeholder="name">
+            <input class="input w-100" type="text" name="name" placeholder="name" value="<?php if($name){ echo $name; }?>">
         </div>
         <div class="mb-5">
-            <input class="input w-100" type="text" name="email" placeholder="email">
+            <input class="input w-100" type="text" name="email" placeholder="email" value="<?php if($email){ echo $email; }?>">
         </div>
         <div class="mb-5">
-            <textarea class="input w-100" name="message" placeholder="message" rows="10" style="resize: none;"></textarea>
+            <textarea class="input w-100" name="message" placeholder="message" rows="6" style="resize: none;"><?php if($message){ echo nl2br(stripslashes($message)); }?></textarea>
         </div>
         <div>
             <input class="btn btn-primary" type="submit" name="submit">

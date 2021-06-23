@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer shadow">
     <div class="subscribe mb-5">
         <form id="subscribe" class="card shadow" name="subscribe" action="./subscribe.php" method="post">
             <div class="mb-5">

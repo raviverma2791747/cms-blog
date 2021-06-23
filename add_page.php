@@ -14,16 +14,20 @@ if (isset($_POST["submit"])) {
     $date = date("Y-m-d");
     $author = $_SESSION["id"];
     $content = safe_string($_POST["content"]);
+    $visible = 0;
+    if (isset($_POST["visible"])) {
+        $visible = 1;
+    }
 
     if ($heading == "" || $content == "") {
         alert("Heading or content is empty!");
     } else {
-        $query = "INSERT INTO page (heading,date,author,content) VALUES('{$heading}','{$date}',{$author},'{$content}');";
+        $query = "INSERT INTO page (heading,date,author,content,visible) VALUES('{$heading}','{$date}',{$author},'{$content}',$visible);";
 
         $result = $con->query($query);
 
         if ($result) {
-           redirect("./admin.php");
+            redirect("./admin.php");
         } else {
             alert("Failed to post!");
         }
@@ -34,6 +38,10 @@ if (isset($_POST["submit"])) {
 <div class="container">
     <div class="card shadow">
         <form action="add_page.php" method="post">
+            <div class="mb-10">
+                <input type="checkbox" name="visible" value="1" checked>
+                <label>Visible</label>
+            </div>
             <div class="mb-10">
                 <input class="input w-100" name="heading" placeholder="heading" value="<?php echo $heading; ?>">
             </div>

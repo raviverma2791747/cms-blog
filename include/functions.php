@@ -31,9 +31,13 @@ function get_user($id){
     return $result;
 }
 
-function get_pages(){
+function get_pages($visible=false){
     global $con;
-    $query = "SELECT * FROM page ORDER BY date ASC";
+    $query = "SELECT * FROM page ";
+    if($visible){
+        $query .= " WHERE visible=1 ";
+    }
+    $query .=" ORDER BY date DESC";
     $result = $con->query($query);
     return $result;
 }
@@ -48,8 +52,11 @@ function get_page($id){
 function blog_card($page){
    echo  "<div class=\"blog card shadow mb-5\">";
    echo  "<h2 class=\"mb-5\">".$page["heading"]."</h2>";
-   $author = get_user($page["author"])->fetch_assoc()["username"];
-   echo  "<small>".$author."</small><br>";
+   $res = get_user($page["author"]);
+   if ($res->num_rows) {
+       $author = $res->fetch_assoc()["username"];
+       echo  "<small>".$author."</small><br>";
+   }
    echo  "<small><time datetime=\"".$page["date"]."\">".$page["date"]."</time></small>";
    echo  "<p class=\"mb-5\">".$page["content"]."</p>";
    echo  "<button class=\"btn btn-primary\"><a href=\"page.php?id=".$page["id"]."\">Read More</a></button>";

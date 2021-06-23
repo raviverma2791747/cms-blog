@@ -2,7 +2,7 @@
 logged_in();
 ?>
 <?php require_once("./include/connection.php"); ?>
-<?php require_once("./include/functions.php");?>
+<?php require_once("./include/functions.php"); ?>
 
 <?php require_once("./include/admin_header.php"); ?>
 <div class="container">
@@ -22,7 +22,7 @@ logged_in();
                 </tr>
                 <?php
                 $result = get_pages();
-                while($page = $result->fetch_assoc()){
+                while ($page = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>";
                     echo  $page["heading"];
@@ -31,11 +31,14 @@ logged_in();
                     echo  $page["date"];
                     echo "</td>";
                     echo "<td>";
-                    $author = get_user($page["author"])->fetch_assoc()["username"];
-                    echo  $author;
+                    $res = get_user($page["author"]);
+                    if ($res->num_rows) {
+                        $author = $res->fetch_assoc()["username"];
+                        echo  $author;
+                    }
                     echo "</td>";
-                    echo "<td>";
-                     echo "<a href=\"edit_page.php?id=".$page["id"]."\">Edit</a> <a href=\"delete_page.php?id=".$page["id"]."\">Delete</a>";
+                    echo "<td class=\"d-flex justify-content-space-evenly\">";
+                    echo "<a href=\"edit_page.php?id=" . $page["id"] . "\">Edit</a> <a class=\"text-danger\" href=\"delete_page.php?id=" . $page["id"] . "\">Delete</a>";
                     echo "</td>";
                     echo "</tr>";
                 }
