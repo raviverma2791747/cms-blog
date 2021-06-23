@@ -10,7 +10,7 @@ require_once("./include/header.php");
     <?php
     $result = get_pages(true);
 
-    if (!$result) {
+    if ($result->num_rows==0) {
         echo "<h2>No articles to show</h2>";
     } else {
         while ($page = $result->fetch_assoc()) {
