@@ -9,7 +9,7 @@ if(isset($_GET["id"])){
     $id = $_GET["id"];
     $query = "DELETE FROM users WHERE id={$id} AND (SELECT COUNT(*) FROM users) >  3";
     $result = $con->query($query);
-    if($_SESSION["id"] == $id){
+    if($_SESSION["id"] == $id && $result->affected_rows){
         redirect("./logout.php");
     }else{
     redirect("./user.php");}
