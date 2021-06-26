@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header class="header shadow sticky-top">
+    <header class="header shadow sticky-top" style="z-index: 1000;">
         <div class="flex-grow-1">
             <h1 class="header-title"><a href="./index.php">Blog CMS</a></h1>
         </div>
